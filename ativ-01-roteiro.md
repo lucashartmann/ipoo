@@ -8,24 +8,28 @@
 
 ### Análise Orientada a Objetos
 
-Agrupamos os dados em objetos
-dados são suas propriedades/estados
-
+- Agrupamos os dados em objetos.
+- Dados são suas propriedades/estados
 - Sempre usamos de alguma metáfora para ajudar a substantivar os dados
-    Exemplo: gerenciador de pacote 'Brew' - metáfora de uma cervejaria
-        - garrafa -> pacote de software
-        - fórmula -> script que gera o pacote
-        - sótão -> repositório de pacotes de software
-        - etc...
-    Exemplo: Windows
-            - janela -> uma view
-            - esquadria -> moldura (frame) de uma view que é um container de outras views...
-            - etc..
-        
-- Listamos os dados procurando identificar substantivos
-- identificamos quais dados são propriedades desses substantivos
 
-Preliminarmente, consideramos que nosso objetos são esses substantivos.
+`Exemplo`: gerenciador de pacote 'Brew' - metáfora de uma cervejaria
+
+- garrafa -> pacote de software
+- fórmula -> script que gera o pacote
+- sótão -> repositório de pacotes de software
+- etc...
+
+`Exemplo`: Windows
+
+- janela -> uma view
+- esquadria -> moldura (frame) de uma view que é um container de outras views...
+- etc..
+
+Método que utilizamos:
+
+- Listamos os dados procurando identificar substantivos
+- Identificamos quais dados são propriedades desses substantivos
+- Preliminarmente, consideramos que nosso objetos são esses substantivos.
 
 Exemplo:
 
