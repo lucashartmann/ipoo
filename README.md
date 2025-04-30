@@ -20,3 +20,11 @@ Programação Orientada a Objetos
 Exercícios
 - [Exercícios resolvidos 01](POO-exercicios-resolvidos-01.ipynb)
 - [01 - POO - leitura e codificação](POO-exercicios-01.ipynb)
+
+
+Atividades
+
+- [Análise de dados orientada a objetos](ativ-01-roteiro.md) - para o PI
+- Exemplo feito em aula : video-locadora
+    - [rascunho da modelagem de dados](trab_prof/videolocadora/modelagem-videoloc.txt)
+    - [videolocadora.py](trab_prof/videolocadora/videolocadora.py)
