@@ -1,11 +1,4 @@
 nomeBebidas = []
-maxContagem = 0
-contagemAtual = 0
-i = 0
-j = 0
-quantBebidas = 0 
-maisPedida = ""
-empate = ""
 
 print("### SISTEMA DO BAR DO ITO ###")
 quantBebidas = int(input("Quantas bebidas foram pedidas? (Máximo 10) "))
