@@ -4,7 +4,7 @@ nome = input("Informe seu nome: ")
 turma = input("Informe sua turma: ")
 
 for i in range(5):
-    while True:    
+    while True:
         nota = float(input(f"Informe sua nota {i}: "))
         if 0 <= nota <= 10:
             notas.append(nota)

@@ -4,7 +4,7 @@ print("### SISTEMA DO BAR DO ITO ###")
 quantBebidas = int(input("Quantas bebidas foram pedidas? (Máximo 10) "))
 
 if quantBebidas > 10:
-      quantBebidas = 10
+    quantBebidas = 10
 
 for i in range(quantBebidas):
     nome = input("Informe o nome da bebida pedida: ")
@@ -26,9 +26,10 @@ for i in range(quantBebidas):
     else:
         if contagemAtual == maxContagem and nomeBebidas[i] != maisPedida:
             empate = "True"
-      
+
 
 if maxContagem > 1 and empate == "False":
-    print("A bebida mais pedida foi: ", maisPedida, " com ", maxContagem, " pedidos.")
+    print("A bebida mais pedida foi: ", maisPedida,
+          " com ", maxContagem, " pedidos.")
 else:
     print("Não teve uma bebida mais pedida.")

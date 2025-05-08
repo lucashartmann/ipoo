@@ -1,8 +1,10 @@
 notas = []
 
+
 def media(notas):
     media = sum(notas) / len(notas)
     return media
+
 
 def situacao(media):
     if media >= 7:
@@ -11,7 +13,8 @@ def situacao(media):
         return "RECUPERAÇÃO"
     else:
         return "REPROVADO"
-    
+
+
 print("### BOLETIM ###")
 for i in range(3):
     nota = input(f"Digite a nota {i} do aluno: ")

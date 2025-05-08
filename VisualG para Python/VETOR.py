@@ -1,5 +1,6 @@
-vendas = [] 
+vendas = []
 vendas_mes = []
+
 
 def menu():
     nome = input("Informe o nome do vendedor: ")
@@ -69,11 +70,13 @@ def menu():
         menu()
     relatorio(nome)
 
+
 def relatorio(nome):
     print(f"Relatório de vendas do vendedor {nome}:")
     for i in range(len(vendas)):
         print(f"Vendas do mês {i+1}: {vendas[i]}")
         print(f"Total de vendas do mês {i+1}: {sum(vendas[i])}")
         print(f"Média de vendas do mês {i+1}: {sum(vendas[i])/len(vendas[i])}")
+
 
 menu()

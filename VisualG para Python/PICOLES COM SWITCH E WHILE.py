@@ -1,4 +1,4 @@
-   
+
 def menu():
     menu = f'''
     ### MENU ###
@@ -11,12 +11,14 @@ print("1 -- Picol� de Uva (R$1,00)")
         '''
     return menu
 
-def main(): 
+
+def main():
     condicao = "S"
     print("#### VENDA DE PICOLÉS ####")
     while condicao == "S":
         print(menu())
-        opcao = int(input("Digite o número correspondente ao picolé que você deseja: "))
+        opcao = int(
+            input("Digite o número correspondente ao picolé que você deseja: "))
         match opcao:
             case 1:
                 quantidade = input("Quantos picol�s deseja comprar?")
@@ -103,6 +105,7 @@ def main():
                 print("o n�mero digitado � inv�lido! Tente novamente")
         print(recibo(valorTotal, quantidadeTotal, desconto, acrescimo, parcelas))
 
+
 def recibo(valorTotal, quantidadeTotal, desconto, acrescimo, parcelas):
     recibo = f'''
 ## RECIBO ##
@@ -114,6 +117,7 @@ Número de parcelas: {parcelas}
 Valor final pago: {valorTotal}
         '''
     return recibo
+
 
 if __name__ == "__main__":
     main()

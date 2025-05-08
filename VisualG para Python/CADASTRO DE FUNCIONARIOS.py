@@ -1,10 +1,12 @@
 funcionarios = []
 
+
 def cadastro(nome):
     if nome not in funcionarios:
         funcionarios.append(nome)
         return True
     return False
+
 
 quant = int(input("Quantos funcionarios deseja cadastrar? "))
 

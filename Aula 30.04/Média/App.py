@@ -9,6 +9,7 @@ for n in range(3):
     nota = float(input(f"Digite a nota {n+1}: "))
     aluno.adicionar_nota(nota)
 
+
 def imprimir(aluno):
     dados = f'''
     Nome: {aluno.nome}
@@ -18,5 +19,6 @@ def imprimir(aluno):
     Situação: {aluno.situacao}
     '''
     print(dados)
-    
+
+
 imprimir(aluno)
