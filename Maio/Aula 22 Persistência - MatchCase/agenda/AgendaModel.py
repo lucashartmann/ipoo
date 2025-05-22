@@ -1,4 +1,6 @@
-minha_agenda = {}
+import shelve
+
+minha_agenda = shelve.open("agenda.db", writeback=True)
 
 
 def cadastrar(agenda, email, nome, idade, endereco, favorito=False):
@@ -14,6 +16,14 @@ def atualizar(agenda, email, nome, idade, endereco, favorito=False):
         return agenda[email]
     except KeyError:
         return None
+
+
+def atualizar_nome(agenda, email, nome):
+    try:
+        agenda[email][0] = nome
+        return True
+    except KeyError:
+        return False
 
 
 def favoritar(agenda, email):
@@ -33,7 +43,6 @@ def apagar(agenda, email):
 
 
 def consultar(agenda, email):
-    status = True
     dados = []
     try:
         dados = agenda[email]
@@ -46,8 +55,3 @@ def listagem(agenda):
     if len(agenda.items()) > 0:
         return agenda.items()
     return None
-
-
-def agenda_init():
-    cadastrar(minha_agenda, 'srx@email.com', 'Sr. X', 30, 'Rua x')
-    cadastrar(minha_agenda, 'sry@email.com', 'Sr. Y', 31, 'Rua y', True)

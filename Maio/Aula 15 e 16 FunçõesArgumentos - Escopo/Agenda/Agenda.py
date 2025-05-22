@@ -121,6 +121,35 @@ def ctrl_listar():
     else:
         print("Registro não encontrado")
 
+def ctrl_consultar(email):    
+    # consultar model
+    ok, registros = consultar(minha_agenda, email)
+    if ok:
+        # repassar para a camada de View os dados obtidos da Model
+        imprimir_um((email, registros))
+    else:
+        print("Registro não encontrado")
+
+def ctrl_apagar(email):
+    sucesso, email = apagar(minha_agenda, email)
+    if sucesso:
+        print(f"Registro excluído: {email}")
+    else:
+        print(f"Registro inexistente: {email}")
+
+def ctrl_cadastrar(email, nome, idade, endereco, favorito):
+    # CADASTRAR: recebe dados da view
+    
+    # pedir que a model cadastre o novo registro
+    ok, email = cadastrar(minha_agenda, email, nome, idade, endereco, favorito)
+
+    # pede à View que informe o usuário sobre o resultado da operação
+    if ok:
+        print(f'{email} cadastrado com sucesso')
+    else:
+        print(f'Não cadastrado: {email} já existe na agenda')
+
+
 # Testes de uso do sistema
 
 def test_ctrl_cadastrar():
@@ -208,3 +237,39 @@ if comando == 'listar':
     ctrl_listar()
 elif comando == 'ajuda':
     ctrl_ajuda()
+elif comando == 'consultar':
+    try:
+        email = sys.argv[2] # receber parâmetro do
+                            # comando 'consultar'
+        ctrl_consultar(email)
+    except IndexError:      # Se parâmetro não informado...
+        ctrl_listar()       # ...ctrl lista todos os registros
+                            # por padrão (default)
+elif comando == 'apagar':
+    try:
+        email = sys.argv[2]
+        ctrl_apagar(email)
+    except IndexError:
+        pass                # ignorando o erro
+elif comando == 'cadastrar':
+    try:
+        email = sys.argv[2]
+        nome = sys.argv[3]
+        idade = int(sys.argv[4]) # converter de str para int
+        endereco = sys.argv[5]        
+        favorito = False
+        try:
+            cod_favorito = sys.argv[6] # vazio, * = favorito; x = não favorito
+            if cod_favorito == '*':
+                favorito = True
+            elif cod_favorito == 'x':
+                favorito = False
+            else:
+                favorito = False
+        except IndexError:
+            pass
+        ctrl_cadastrar(email, nome, idade, endereco, favorito)
+        ctrl_listar()
+
+    except IndexError:
+        pass

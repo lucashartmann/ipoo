@@ -48,16 +48,19 @@ def ctrl_cadastrar(email, nome, idade, endereco, favorito):
         print(f'Não cadastrado: {email} já existe na agenda')
 
 
-def test_ctrl_atualizar():
-    email = 'srz@email.com'
-    nome = 'Senhor Ze'
-    idade = 31
-    endereco = 'Rua do sr. Z'
+def ctrl_atualizar(email, nome, idade, endereco, favorito):
     atualizar = AgendaModel.atualizar(
-        AgendaModel.minha_agenda, email, nome, idade, endereco)
+        AgendaModel.minha_agenda, email, nome, idade, endereco, favorito)
     if atualizar:
         print(f'{email} atualizado com sucesso')
-        dados = AgendaModel.consultar(AgendaModel.minha_agenda, email)
-        AgendaView.imprimir_um((email, dados))
     else:
         print(f'{email} não existe na agenda')
+
+
+def ctrl_atualizar_nome(email, novo_nome):
+    favoritar = AgendaModel.atualizar_nome(
+        AgendaModel.minha_agenda, email, novo_nome)
+    if favoritar:
+        print(f'Nome alterado com sucesso: {novo_nome}')
+    else:
+        print("Erro ao alterar nome")
