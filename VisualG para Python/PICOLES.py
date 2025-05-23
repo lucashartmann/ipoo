@@ -12,34 +12,28 @@ Digite o número correspondente ao picolé que você deseja:
         '''
     return menu
 
-
 def main():
     opcao = 0
     quant = 0
     value = 0.0
-    print("## VENDA DE PICOL�S ##")
-    while opcao < 1 or opcao > 6:
+    print("## VENDA DE PICOLÉS ##")
+    while True:
         print(menu())
         opcao = int(input("Informe a opção desejada: "))
         match opcao:
             case 1:
-                quant = quant + 1
                 value = value + 1.00
                 print("Picolé de Uva comprado!")
             case 2:
-                quant = quant + 1
                 value = value + 1.25
                 print("Picolé de Laranja comprado!")
             case 3:
-                quant = quant + 1
                 value = value + 1.50
                 print("Picolé de Milho comprado!")
             case 4:
-                quant = quant + 1
                 value = value + 1.80
                 print("Picolé de Coco queimado comprado!")
             case 5:
-                quant = quant + 1
                 value = value + 2.00
                 print("Picolé de Tamarindo comprado!")
             case 6:
@@ -47,7 +41,7 @@ def main():
                 break
             case _:
                 print("O número digitado é inválido!")
-        menu()
+        quant = quant + 1
         print(dados(quant, value))
 
 

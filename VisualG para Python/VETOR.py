@@ -5,17 +5,17 @@ vendas_mes = []
 def menu():
     nome = input("Informe o nome do vendedor: ")
     opcao = 0
-    while opcao < 1 or opcao > 7:
+    while True:
         vendas_mes = []
         menu = f'''
-        ### MENU ###
-        1 - Cadastrar venda de janeiro:
-        2 - Cadastrar venda de fevereiro:
-        3 - Cadastrar venda de março:
-        4 - Cadastrar venda de abril:
-        5 - Cadastrar venda de maio:
-        6 - Cadastrar venda de junho:
-        7 - Sair do menu
+### MENU ###
+1 - Cadastrar venda de janeiro:
+2 - Cadastrar venda de fevereiro:
+3 - Cadastrar venda de março:
+4 - Cadastrar venda de abril:
+5 - Cadastrar venda de maio:
+6 - Cadastrar venda de junho:
+7 - Sair do menu
         '''
         print(menu)
         opcao = int(input("Informe a opção desejada: "))
@@ -67,7 +67,6 @@ def menu():
                 break
             case _:
                 print("Opção inválida. Tente novamente.")
-        menu()
     relatorio(nome)
 
 
