@@ -1,0 +1,23 @@
+class Locomotiva:
+    id = 0
+
+    def __init__(self, quant_combustivel, peso):
+        self.id = self.gerar_id()
+        self.quant_combustivel = quant_combustivel
+        self.peso = peso
+
+    def gerar_id(self):
+        Locomotiva.id += 1
+        return Locomotiva.id
+
+    def get_peso(self):
+        return self.peso
+
+    def get_quant_combustivel(self):
+        return self.quant_combustivel
+
+    def get_id(self):
+        return self.id
+
+    def __str__(self):
+        return f"Locomotiva [id = {self.get_id()}, peso = {self.get_peso()}]"
