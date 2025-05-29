@@ -28,11 +28,29 @@ def opcoes_menu():
     15 - Ver a quantidade de veiculos da garagem
     16 - Encerrar programa
     '''
+    return menu
+
+
+def init():
+    locomotiva1 = Locomotiva.Locomotiva(100.0, 500.0)
+    locomotiva2 = Locomotiva.Locomotiva(100.0, 500.0)
+    garagem_locomotivas.estacionar(locomotiva1)
+    garagem_locomotivas.estacionar(locomotiva2)
+
+    vagao1 = Vagao.Vagao(200.0)
+    vagao2 = Vagao.Vagao(500.0)
+    vagao3 = Vagao.Vagao(100.0)
+    garagem_vagoes.estacionar(vagao1)
+    garagem_vagoes.estacionar(vagao2)
+    garagem_vagoes.estacionar(vagao3)
+
+    trem1 = Trem.Trem()
+    garagem_trens.estacionar(trem1)
 
 
 def menu():
     while True:
-        print(menu)
+        print(opcoes_menu)
         opcao = int(input("Digite o numero correspondente a opção desejada: "))
         match opcao:
             case 1 | 2 | 3:
@@ -82,8 +100,9 @@ def cadastro(opcao):
             vagao = Vagao.Vagao(peso)
             cadastro = garagem_vagoes.estacionar(vagao)
         else:
-            locomotiva = Locomotiva.Locomotiva(peso)
-            cadastro = garagem_locomotivas.estacionar(locomotiva1)
+            combustivel = float(input("Digite a quantidade de combustivel: "))
+            locomotiva = Locomotiva.Locomotiva(combustivel, peso)
+            cadastro = garagem_locomotivas.estacionar(locomotiva)
 
     if cadastro:
         print("Cadastro realizado com sucesso")
@@ -163,36 +182,36 @@ def desengatar():
         garagem_locomotivas.estacionar(locomotiva)
 
 
-locomotiva1 = Locomotiva.Locomotiva(100.0, 500.0)
-locomotiva2 = Locomotiva.Locomotiva(100.0, 500.0)
-garagem_locomotivas.estacionar(locomotiva1)
-garagem_locomotivas.estacionar(locomotiva2)
+# locomotiva1 = Locomotiva.Locomotiva(100.0, 500.0)
+# locomotiva2 = Locomotiva.Locomotiva(100.0, 500.0)
+# garagem_locomotivas.estacionar(locomotiva1)
+# garagem_locomotivas.estacionar(locomotiva2)
 
-vagao1 = Vagao.Vagao(200.0)
-vagao2 = Vagao.Vagao(500.0)
-vagao3 = Vagao.Vagao(100.0)
-garagem_vagoes.estacionar(vagao1)
-garagem_vagoes.estacionar(vagao2)
-garagem_vagoes.estacionar(vagao3)
+# vagao1 = Vagao.Vagao(200.0)
+# vagao2 = Vagao.Vagao(500.0)
+# vagao3 = Vagao.Vagao(100.0)
+# garagem_vagoes.estacionar(vagao1)
+# garagem_vagoes.estacionar(vagao2)
+# garagem_vagoes.estacionar(vagao3)
 
 
-trem1 = Trem.Trem()
-garagem_trens.estacionar(trem1)
+# trem1 = Trem.Trem()
+# garagem_trens.estacionar(trem1)
 
-print(trem1)
+# print(trem1)
 
-trem1.engatar(locomotiva1)
-trem1.engatar(vagao1)
-trem1.engatar(vagao2)
-trem1.engatar(vagao3)
+# trem1.engatar(locomotiva1)
+# trem1.engatar(vagao1)
+# trem1.engatar(vagao2)
+# trem1.engatar(vagao3)
 
-print(trem1)
+# print(trem1)
 
-trem1.desengatar(vagao1)
+# trem1.desengatar(vagao1)
 
-print(trem1)
+# print(trem1)
 
-# menu()
+print(menu())
 
 # if type(parte_trem) == Locomotiva:
 #     GaragemLocomotiva.estaciona_locomotiva(parte_trem)
