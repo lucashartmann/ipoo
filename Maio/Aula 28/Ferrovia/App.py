@@ -1,11 +1,7 @@
-import Locomotiva
-import Vagao
-import Trem
-import Garagem
+from models import Locomotiva, Vagao, Trem, Garagem
 
-garagem_locomotivas = Garagem.Garagem(200)
-garagem_vagoes = Garagem.Garagem(200)
-garagem_trens = Garagem.Garagem(200)
+
+garagem = Garagem.Garagem(900)
 
 
 def opcoes_menu():
@@ -34,23 +30,23 @@ def opcoes_menu():
 def init():
     locomotiva1 = Locomotiva.Locomotiva(100.0, 500.0)
     locomotiva2 = Locomotiva.Locomotiva(100.0, 500.0)
-    garagem_locomotivas.estacionar(locomotiva1)
-    garagem_locomotivas.estacionar(locomotiva2)
+    garagem.estacionar(locomotiva1)
+    garagem.estacionar(locomotiva2)
 
     vagao1 = Vagao.Vagao(200.0)
     vagao2 = Vagao.Vagao(500.0)
     vagao3 = Vagao.Vagao(100.0)
-    garagem_vagoes.estacionar(vagao1)
-    garagem_vagoes.estacionar(vagao2)
-    garagem_vagoes.estacionar(vagao3)
+    garagem.estacionar(vagao1)
+    garagem.estacionar(vagao2)
+    garagem.estacionar(vagao3)
 
     trem1 = Trem.Trem()
-    garagem_trens.estacionar(trem1)
+    garagem.estacionar(trem1)
 
 
 def menu():
     while True:
-        print(opcoes_menu)
+        print(opcoes_menu())
         opcao = int(input("Digite o numero correspondente a opção desejada: "))
         match opcao:
             case 1 | 2 | 3:
@@ -64,25 +60,64 @@ def menu():
             case 9:
                 opcao = int(input("1 - Vagao, 2 - Locomotiva, 3 - Trem: "))
                 if opcao == 1:
-                    garagem_vagoes.esvaziar_garagem()
+                    garagem.remover_todos_vagoes()
+                    print("Vagões removidos com sucesso")
+                    print("VAGÕES NA GARAGEM:")
+                    print(garagem.get_lista_vagoes())
                 elif opcao == 2:
-                    garagem_locomotivas.esvaziar_garagem()
+                    garagem.remover_todas_locomotivas()
+                    print("Locomotivas removidas com sucesso")
+                    print("LOCOMOTIVAS NA GARAGEM:")
+                    print(garagem.get_lista_locomotivas())
                 else:
-                    garagem_trens.esvaziar_garagem()
-                print("Garagem esvaziada com sucesso!")
-                pass
+                    garagem.remover_todos_trens()
+                    print("Trens removidos com sucesso")
+                    print("TRENS NA GARAGEM:")
+                    print(garagem.get_lista_trens())
             case 10:
-                pass
+                id = int(input("Digite o id do trem: "))
+                trem = garagem.get_veiculo_por_id(id)
+                if trem is None:
+                    print(f"Não existe trem com o id: {id}")
+                    return
+                trem.esvaziar()
+                print("Trem esvaziado com sucesso!")
+                print(trem)
             case 11:
-                pass
+                vagoes = garagem.get_lista_vagoes()
+                if not vagoes:
+                    print("Não há vagões na garagem")
+                else:
+                    print("VAGÕES NA GARAGEM:")
+                    for vagao in vagoes:
+                        print(vagao)
             case 12:
-                pass
+                Locomotivas = garagem.get_lista_locomotivas()
+                if not Locomotivas:
+                    print("Não há locomotivas na garagem")
+                else:
+                    print("LOCOMOTIVAS NA GARAGEM:")
+                    for locomotiva in Locomotivas:
+                        print(locomotiva)
             case 13:
-                pass
+                trens = garagem.get_lista_trens()
+                if not trens:
+                    print("Não há trens na garagem")
+                else:
+                    print("TRENS NA GARAGEM:")
+                    for trem in trens:
+                        print(trem)
             case 14:
-                pass
+                veiculos = garagem.get_veiculos_ferroviarios()
+                if not veiculos:
+                    print("Não há veículos na garagem")
+                else:
+                    print("VEÍCULOS NA GARAGEM:")
+                    for veiculo in veiculos:
+                        print(veiculo)
             case 15:
-                pass
+                print(
+                    f"Quantidade de veículos na garagem: {garagem.get_quant_veiculos_ferroviarios()}")
             case 16:
                 break
             case _:
@@ -92,17 +127,17 @@ def menu():
 def cadastro(opcao):
 
     if opcao == 3:
-        trem = Trem()
-        cadastro = garagem_trens.estacionar(trem)
+        trem = Trem.Trem()
+        cadastro = garagem.estacionar(trem)
     else:
         peso = float(input("Digite o peso: "))
         if opcao == 1:
             vagao = Vagao.Vagao(peso)
-            cadastro = garagem_vagoes.estacionar(vagao)
+            cadastro = garagem.estacionar(vagao)
         else:
             combustivel = float(input("Digite a quantidade de combustivel: "))
             locomotiva = Locomotiva.Locomotiva(combustivel, peso)
-            cadastro = garagem_locomotivas.estacionar(locomotiva)
+            cadastro = garagem.estacionar(locomotiva)
 
     if cadastro:
         print("Cadastro realizado com sucesso")
@@ -113,14 +148,14 @@ def cadastro(opcao):
 def remocao(opcao):
     id = int(input("Digite id do veiculo: "))
     if opcao == 4:
-        vagao = garagem_vagoes.get_veiculo_por_id(id)
-        remocao = garagem_vagoes.remove_veiculo(vagao)
+        vagao = garagem.get_veiculo_por_id(id)
+        remocao = garagem.remove_veiculo(vagao)
     elif opcao == 5:
-        locomotiva = garagem_locomotivas.get_veiculo_por_id(id)
-        remocao = garagem_locomotivas.remove_veiculo(locomotiva)
+        locomotiva = garagem.get_veiculo_por_id(id)
+        remocao = garagem.remove_veiculo(locomotiva)
     else:
-        trem = garagem_trens.get_veiculo_por_id(id)
-        remocao = garagem_trens.remove_veiculo(trem)
+        trem = garagem.get_veiculo_por_id(id)
+        remocao = garagem.remove_veiculo(trem)
 
     if remocao:
         print("Veiculo removido com sucesso")
@@ -129,91 +164,39 @@ def remocao(opcao):
 
 
 def engatar_no_trem():
-    id = int(input("Digite id do trem"))
-    trem = garagem_trens.get_veiculo_por_id(id)
+    id = int(input("Digite id do trem: "))
+    trem = garagem.get_veiculo_por_id(id)
     if trem is None:
         print(f"Não existe trem com o id: {id}")
         return
-    opcao = input("(vagao) V ou L (Locomotiva)")
-    if opcao == 'V':
+    id = int(input("Digite id do veiculo: "))
+    veiculo = garagem.get_veiculo_por_id(id)
+    if type(veiculo) == Vagao.Vagao:
         if trem.possui_locomotiva() == False:
             print("ERRO. Não é possivel engatar um vagão em um trem sem locomotiva")
             return
-        else:
-            id = int(input("Digite id do vagão: "))
-            vagao = garagem_vagoes.get_veiculo_por_id(id)
-            if vagao is None:
-                print(f"Não existe vagao com o id: {id}")
-                return
-            trem.engatar(vagao)
-            garagem_vagoes.remove_veiculo(vagao)
-    else:
-        id = int(input("Digite id da locomotiva: "))
-        locomotiva = garagem_locomotivas.get_veiculo_por_id(id)
-        if locomotiva is None:
-            print(f"Não existe locomotiva com o id: {id}")
-            return
-        trem.engatar(locomotiva)
-        garagem_locomotivas.remove_veiculo(locomotiva)
+    if veiculo is None:
+        print(f"Não existe veiculo com o id: {id}")
+        return
+    trem.engatar(veiculo)
+    garagem.remove_veiculo(veiculo)
 
 
 def desengatar():
-    id = int(input("Digite id do trem"))
-    trem = garagem_trens.get_veiculo_por_id(id)
+    id = int(input("Digite id do trem: "))
+    trem = garagem.get_veiculo_por_id(id)
     if trem is None:
         print(f"Não existe trem com o id: {id}")
         return
-    opcao = input("(vagao) V ou L (Locomotiva)")
-    if opcao == 'V':
-        id = int(input("Digite id do vagão: "))
-        vagao = garagem_vagoes.get_veiculo_por_id(id)
-        if vagao is None:
-            print(f"Não existe vagao com o id: {id}")
-            return
-        trem.desengatar(vagao)
-        garagem_vagoes.estacionar(vagao)
-    else:
-        id = int(input("Digite id da locomotiva: "))
-        locomotiva = garagem_locomotivas.get_veiculo_por_id(id)
-        if locomotiva is None:
-            print(f"Não existe locomotiva com o id: {id}")
-            return
-        trem.desengatar(locomotiva)
-        garagem_locomotivas.estacionar(locomotiva)
+    id = int(input("Digite id do veiculo: "))
+    veiculo = garagem.get_veiculo_por_id(id)
+    if veiculo is None:
+        print(f"Não existe veiculo com o id: {id}")
+        return
+    trem.desengatar(veiculo)
+    garagem.estacionar(veiculo)
 
 
-# locomotiva1 = Locomotiva.Locomotiva(100.0, 500.0)
-# locomotiva2 = Locomotiva.Locomotiva(100.0, 500.0)
-# garagem_locomotivas.estacionar(locomotiva1)
-# garagem_locomotivas.estacionar(locomotiva2)
-
-# vagao1 = Vagao.Vagao(200.0)
-# vagao2 = Vagao.Vagao(500.0)
-# vagao3 = Vagao.Vagao(100.0)
-# garagem_vagoes.estacionar(vagao1)
-# garagem_vagoes.estacionar(vagao2)
-# garagem_vagoes.estacionar(vagao3)
-
-
-# trem1 = Trem.Trem()
-# garagem_trens.estacionar(trem1)
-
-# print(trem1)
-
-# trem1.engatar(locomotiva1)
-# trem1.engatar(vagao1)
-# trem1.engatar(vagao2)
-# trem1.engatar(vagao3)
-
-# print(trem1)
-
-# trem1.desengatar(vagao1)
-
-# print(trem1)
-
-print(menu())
-
-# if type(parte_trem) == Locomotiva:
-#     GaragemLocomotiva.estaciona_locomotiva(parte_trem)
-# else:
-#     GaragemVagao.estaciona_vagao(parte_trem)
+if __name__ == "__main__":
+    init()
+    menu()

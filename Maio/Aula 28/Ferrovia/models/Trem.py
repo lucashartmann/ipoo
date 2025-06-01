@@ -1,5 +1,4 @@
-import Vagao
-import Locomotiva
+from models import Locomotiva, Vagao, Trem
 
 
 class Trem:

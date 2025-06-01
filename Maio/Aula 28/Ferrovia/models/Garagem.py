@@ -1,6 +1,4 @@
-import Locomotiva
-import Vagao
-import Trem
+from models import Locomotiva, Vagao, Trem
 
 
 class Garagem:
@@ -76,3 +74,9 @@ class Garagem:
             if type(veiculo) == Vagao.Vagao:
                 vagoes_na_garagem.append(veiculo)
         return vagoes_na_garagem
+
+    def possui_locomotiva(self):
+        for veiculo in self.veiculos_ferroviarios:
+            if type(veiculo) == Locomotiva.Locomotiva:
+                return True
+        return False
