@@ -6,7 +6,7 @@ class Trem:
 
     def __init__(self):
         self.id = self.gerar_id()
-        # self.capacidade = capacidade
+        # self.capacidade_passageiros = capacidade_passageiros
         # self.quant_passageiros = 0
         # self.quant_vagoes = 0
         # self.quant_locomotivas = 0
@@ -53,7 +53,8 @@ class Trem:
             return 0
 
     def engatar(self, veiculo):
-        if (type(veiculo) == Locomotiva.Locomotiva or type(veiculo) == Vagao.Vagao) and veiculo not in self.trem and self.peso_atual < self.peso_suportado:
+        peso_total = self.peso_atual + veiculo.get_peso()
+        if (type(veiculo) == Locomotiva.Locomotiva or type(veiculo) == Vagao.Vagao) and veiculo not in self.trem and peso_total <= self.peso_suportado:
             self.peso_atual += veiculo.get_peso()
             self.trem.append(veiculo)
             return True

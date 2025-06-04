@@ -4,6 +4,8 @@ class Vagao:
     def __init__(self, peso):
         self.id = self.gerar_id()
         self.peso = peso
+        # passageiros = []
+        # self.peso += passageiro.get_peso()
 
     def gerar_id(self):
         Vagao.id += 1

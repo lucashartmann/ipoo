@@ -23,3 +23,4 @@ O trem pode possuir mais uma locomotiva
 ### Falta:
 
 - Poder adicionar uma lista de vagões e locomotivas ao trem
+- Vagão de passageiros, soma o peso dos passageiros ao peso do vagão
