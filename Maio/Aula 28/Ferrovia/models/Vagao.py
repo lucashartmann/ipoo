@@ -10,10 +10,16 @@ class Vagao:
         return Vagao.id
 
     def get_peso(self):
-        return self.peso
+        try:
+            return self.peso
+        except AttributeError:
+            return 0
 
     def get_id(self):
-        return self.id
+        try:
+            return self.id
+        except AttributeError:
+            return 0
 
     def __str__(self):
         return f"Vagao [id = {self.get_id()}, peso = {self.get_peso()}]"

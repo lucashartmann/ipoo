@@ -21,50 +21,76 @@ class Trem:
         return Trem.id
 
     def get_id(self):
-        return self.id
+        try:
+            return self.id
+        except AttributeError:
+            return 0
 
-    def get_locomotiva(self):
-        return self.locomotiva
+    def get_locomotivas(self):
+        locomotivas = []
+        for veiculo in self.trem:
+            if type(veiculo) == Locomotiva.Locomotiva:
+                locomotivas.append(veiculo)
+        return locomotivas
 
     def get_vagoes(self):
-        return self.vagoes
+        vagoes = []
+        for veiculo in self.trem:
+            if type(veiculo) == Vagao.Vagao:
+                vagoes.append(veiculo)
+        return vagoes
 
     def get_peso_suportado(self):
-        return self.peso_suportado
+        try:
+            return self.peso_suportado
+        except AttributeError:
+            return 0
 
     def get_peso_atual(self):
-        return self.peso_atual
+        try:
+            return self.peso_atual
+        except AttributeError:
+            return 0
 
     def engatar(self, veiculo):
-        if (type(veiculo) == Locomotiva.Locomotiva or type(veiculo) == Vagao.Vagao) and veiculo not in self.trem and self.peso_atual <= self.peso_suportado:
+        if (type(veiculo) == Locomotiva.Locomotiva or type(veiculo) == Vagao.Vagao) and veiculo not in self.trem and self.peso_atual < self.peso_suportado:
             self.peso_atual += veiculo.get_peso()
             self.trem.append(veiculo)
             return True
         return False
 
     def desengatar(self, veiculo):
-        if (type(veiculo) == Locomotiva.Locomotiva or type(veiculo) == Vagao.Vagao) and veiculo in self.trem and self.peso_atual <= self.peso_suportado:
-            ultimo_index = len(self.trem) - 1
+        try:
             index_veiculo = self.trem.index(veiculo)
+            ultimo_index = len(self.trem) - 1
             if index_veiculo == ultimo_index:
                 self.trem.remove(veiculo)
                 self.peso_atual -= veiculo.get_peso()
-                return True
             else:
-                for veiculo_ferroviario in self.trem[index_veiculo::]:
+                for veiculo_ferroviario in self.trem[index_veiculo:]:
                     self.trem.remove(veiculo_ferroviario)
-                    # self.peso_atual -= veiculo.get_peso() ?
                     self.peso_atual -= veiculo_ferroviario.get_peso()
-                return True
-        return False
+            return True
+        except ValueError:
+            return False
 
     def get_trem(self):
-        return self.trem
+        try:
+            return self.trem
+        except AttributeError:
+            return []
 
     def esvaziar(self):
         self.trem.clear()
+        
+    def possui_locomotiva(self):
+        for veiculo in self.trem:
+            if type(veiculo) == Locomotiva.Locomotiva:
+                return True
+        return False
+
 
     def __str__(self):
         string_veiculo = " <- ".join(str(veiculo)
                                      for veiculo in self.get_trem())
-        return f"Trem: [{string_veiculo}] "
+        return f"Trem[{self.get_id()}]: [{string_veiculo}] "

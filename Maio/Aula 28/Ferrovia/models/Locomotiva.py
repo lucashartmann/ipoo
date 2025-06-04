@@ -11,13 +11,22 @@ class Locomotiva:
         return Locomotiva.id
 
     def get_peso(self):
-        return self.peso
+        try:
+            return self.peso
+        except AttributeError:
+            return 0
 
     def get_quant_combustivel(self):
-        return self.quant_combustivel
+        try:
+            return self.quant_combustivel
+        except AttributeError:
+            return 0
 
     def get_id(self):
-        return self.id
+        try:
+            return self.id
+        except AttributeError:
+            return 0
 
     def __str__(self):
         return f"Locomotiva [id = {self.get_id()}, peso = {self.get_peso()}]"

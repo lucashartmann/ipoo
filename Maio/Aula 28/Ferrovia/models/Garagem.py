@@ -2,6 +2,8 @@ from models import Locomotiva, Vagao, Trem
 
 
 class Garagem:
+    
+    id = 0
 
     def __init__(self, capacidade):
         self.veiculos_ferroviarios = []
@@ -12,14 +14,17 @@ class Garagem:
         if veiculo not in self.veiculos_ferroviarios and self.capacidade >= self.quant_veiculos_ferroviarios:
             self.veiculos_ferroviarios.append(veiculo)
             self.quant_veiculos_ferroviarios += 1
+            Garagem.id += 1
+            veiculo.id = Garagem.id
             return True
         return False
 
     def remove_veiculo(self, veiculo):
-        if veiculo in self.veiculos_ferroviarios:
+        try:
             self.veiculos_ferroviarios.remove(veiculo)
             return True
-        return False
+        except ValueError:
+            return False
 
     def remover_todos_trens(self):
         for veiculo in self.veiculos_ferroviarios:
@@ -75,8 +80,3 @@ class Garagem:
                 vagoes_na_garagem.append(veiculo)
         return vagoes_na_garagem
 
-    def possui_locomotiva(self):
-        for veiculo in self.veiculos_ferroviarios:
-            if type(veiculo) == Locomotiva.Locomotiva:
-                return True
-        return False
