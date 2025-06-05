@@ -1,10 +1,13 @@
 class Estante:
+    id = 0
     def __init__(self):
         self.livros_comprados = []
 
     def adicionar_livro(self, livro):
         if livro not in self.livros_comprados:
             self.livros_comprados.append(livro)
+            livro.id = Estante.id
+            Estante.id += 1
             return True
         return False
     
@@ -38,8 +41,22 @@ class Estante:
                 livros_finalizados.append(livro)
         return livros_finalizados
     
-    def get_livro_por_titulo(self, titulo):
+    def get_livro_por_id(self, id):
         for livro in self.livros_comprados:
-            if livro.get_titulo() == titulo:
+            if livro.get_id() == id:
                 return livro
         return None
+    
+    def get_livros_por_autor(self, autor):
+        livros_por_autor = []
+        for livro in self.livros_comprados:
+            if livro.get_autor() == autor:
+                livros_por_autor.append(livro)
+        return livros_por_autor
+    
+    def pesquisar_livros_por_titulo(self, titulo):
+        livros = []
+        for livro in self.livros_comprados:
+            if titulo in livro.get_titulo():
+                livros.append(livro)
+        return livros
