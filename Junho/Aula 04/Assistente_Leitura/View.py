@@ -10,7 +10,7 @@ class View:
     def pedir_dado(mensagem):
         dado = input(f"{mensagem}: ")
         return dado
-    
+
     def ajuda():
         ajuda = '''
 "Comandos disponíveis:"

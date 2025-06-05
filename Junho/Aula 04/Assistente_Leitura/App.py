@@ -11,22 +11,26 @@ View.View.imprimir(
 Controller.Controller.carregar_estante()
 
 try:
-    comando = sys.argv[1:]  
+    comando = sys.argv[1:]
 except IndexError:
     View.View.imprimir("ERRO")
     View.View.ajuda()
     sys.exit(0)
-    
+
+# python App.py cadastrar_livro "DOM CASMURRO" "MACHADO DE ASSIS" 300
+# python App.py cadastrar_livro "O PRINCIPE" "MAQUIAVEL" 200
+# python App.py livros_cadastrados
+
 
 match comando:
-    case ["ajuda"]: 
+    case ["ajuda"]:
         View.View.ajuda()
-    case ["cadastrar_livro", titulo, autor, quant_paginas]: 
+    case ["cadastrar_livro", titulo, autor, quant_paginas]:
         livro = Livro.Livro(titulo.upper(), autor.upper(), int(quant_paginas))
         Controller.Controller.cadastrar_livro(livro)
-    case ["remover_livro", id]: 
+    case ["remover_livro", id]:
         Controller.Controller.remover_livro(int(id))
-    case ["marcar_pagina", id, pagina]: 
+    case ["marcar_pagina", id, pagina]:
         Controller.Controller.marcar_pagina(int(id), int(pagina))
     case ["status", id]:
         Controller.Controller.get_status(int(id))
@@ -36,17 +40,17 @@ match comando:
         Controller.Controller.get_quant_paginas_restantes(int(id))
     case ["percentual", id]:
         Controller.Controller.get_percentual_leitura(int(id))
-    case ["livros_cadastrados"]: 
+    case ["livros_cadastrados"]:
         Controller.Controller.ver_livros_cadastrados()
-    case ["leituras_em_andamento"]: 
+    case ["leituras_em_andamento"]:
         Controller.Controller.ver_leituras_em_andamento()
-    case ["leituras_concluidas"]: 
+    case ["leituras_concluidas"]:
         Controller.Controller.ver_leituras_concluidas()
-    case ["leituras_nao_iniciadas"]: 
+    case ["leituras_nao_iniciadas"]:
         Controller.Controller.ver_leituras_nao_iniciadas()
-    case ["ver_livros_do_autor", autor]: 
+    case ["ver_livros_do_autor", autor]:
         Controller.Controller.pesquisar_livros_do_autor(autor.upper())
-    case ["pesquisar_livros_por_titulo", titulo]: 
+    case ["pesquisar_livros_por_titulo", titulo]:
         Controller.Controller.pesquisar_livros_por_titulo(titulo.upper())
     case _:
         View.View.imprimir("Entrada inválida")

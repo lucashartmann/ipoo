@@ -3,6 +3,9 @@ class Estante:
     def __init__(self):
         self.livros_comprados = []
 
+    def get_id():
+        return Estante.id
+
     def adicionar_livro(self, livro):
         if livro not in self.livros_comprados:
             self.livros_comprados.append(livro)
