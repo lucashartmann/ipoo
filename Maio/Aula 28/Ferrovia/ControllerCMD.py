@@ -5,10 +5,10 @@ import View
 class ControllerCMD:
 
     garagem = Garagem.Garagem(900)
-    
+
     def get_garagem():
         return ControllerCMD.garagem
-    
+
     def init():
         locomotiva1 = Locomotiva.Locomotiva(100.0, 500.0)
         locomotiva2 = Locomotiva.Locomotiva(100.0, 500.0)
@@ -25,16 +25,20 @@ class ControllerCMD:
         trem1 = Trem.Trem()
         ControllerCMD.get_garagem().estacionar(trem1)
 
-
     def adicionar_vagao(peso):
         vagao = Vagao.Vagao(peso)
         cadastro = ControllerCMD.get_garagem().estacionar(vagao)
+        str = ""
         if cadastro:
             View.View.mostrar_mensagem("Cadastro realizado com sucesso")
             View.View.mostrar_mensagem(vagao)
+            str = f"Cadastrado realizado com sucesso!\n{vagao}"
         else:
             View.View.mostrar_mensagem(
                 "ERRO. Não foi possivel realizar cadastro")
+            str = "ERRO. Não foi possivel realizar cadastro"
+
+        return str
 
     def adicionar_locomotiva(combustivel, peso):
         locomotiva = Locomotiva.Locomotiva(combustivel, peso)
@@ -109,19 +113,22 @@ class ControllerCMD:
         remocao = ControllerCMD.get_garagem().remover_todos_trens()
         View.View.mostrar_mensagem("Trens removidos com sucesso")
         View.View.mostrar_mensagem("TRENS NA GARAGEM:")
-        View.View.mostrar_mensagem(ControllerCMD.get_garagem().get_lista_trens())
+        View.View.mostrar_mensagem(
+            ControllerCMD.get_garagem().get_lista_trens())
 
     def remover_locomotivas_da_garagem():
         ControllerCMD.get_garagem().remover_todas_locomotivas()
         View.View.mostrar_mensagem("Locomotivas removidas com sucesso")
         View.View.mostrar_mensagem("LOCOMOTIVAS NA GARAGEM:")
-        View.View.mostrar_mensagem(ControllerCMD.get_garagem().get_lista_locomotivas())
+        View.View.mostrar_mensagem(
+            ControllerCMD.get_garagem().get_lista_locomotivas())
 
     def remover_vagoes_da_garagem():
         ControllerCMD.get_garagem().remover_todos_vagoes()
         View.View.mostrar_mensagem("Vagões removidos com sucesso")
         View.View.mostrar_mensagem("VAGÕES NA GARAGEM:")
-        View.View.mostrar_mensagem(ControllerCMD.get_garagem().get_lista_vagoes())
+        View.View.mostrar_mensagem(
+            ControllerCMD.get_garagem().get_lista_vagoes())
 
     def esvaziar_trem(id):
         trem = ControllerCMD.get_garagem().get_veiculo_por_id(id)
@@ -133,16 +140,19 @@ class ControllerCMD:
 
     def listar_trens():
         View.View.mostrar_mensagem("TRENS NA GARAGEM:")
-        View.View.mostrar_mensagem(ControllerCMD.ControllerCMD.get_garagem().get_lista_trens())
-        
+        View.View.mostrar_mensagem(
+            ControllerCMD.ControllerCMD.get_garagem().get_lista_trens())
+
     def listar_locomotivas():
         View.View.mostrar_mensagem("LOCOMOTIVAS NA GARAGEM:")
-        View.View.mostrar_mensagem(ControllerCMD.get_garagem().get_lista_locomotivas())
-        
+        View.View.mostrar_mensagem(
+            ControllerCMD.get_garagem().get_lista_locomotivas())
+
     def listar_vagoes():
         View.View.mostrar_mensagem("VAGÕES NA GARAGEM:")
-        View.View.mostrar_mensagem(ControllerCMD.get_garagem().get_lista_vagoes())
-        
+        View.View.mostrar_mensagem(
+            ControllerCMD.get_garagem().get_lista_vagoes())
+
     def listar_veiculos():
         veiculos = ControllerCMD.get_garagem().get_veiculos_ferroviarios()
         if not veiculos:

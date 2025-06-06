@@ -2,7 +2,7 @@ from models import Locomotiva, Vagao, Trem
 
 
 class Garagem:
-    
+
     id = 0
 
     def __init__(self, capacidade):
@@ -79,4 +79,3 @@ class Garagem:
             if type(veiculo) == Vagao.Vagao:
                 vagoes_na_garagem.append(veiculo)
         return vagoes_na_garagem
-

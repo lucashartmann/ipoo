@@ -2,14 +2,10 @@ class Vagao:
     id = 0
 
     def __init__(self, peso):
-        self.id = self.gerar_id()
+        self.id = Vagao.id
         self.peso = peso
         # passageiros = []
         # self.peso += passageiro.get_peso()
-
-    def gerar_id(self):
-        Vagao.id += 1
-        return Vagao.id
 
     def get_peso(self):
         try:
