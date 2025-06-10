@@ -7,42 +7,41 @@ from controller.ControllerCMD import ControllerCMD
 
 class WidgetsDados(HorizontalGroup):
 
+    def on_button_pressed(self, event: Button.Pressed):
+        areaTexto = self.screen.query_selector("#resultado", TextArea)
+        match event.button.id:
+            case "locomotivas_garagem":
+                str_lista = ControllerCMD.listar_locomotivas_garagem()
+                str_quant = ControllerCMD.get_quant_locomotivas_garagem()
+                str_final = str_quant + "\n" + str_lista
+                areaTexto.text = str_final
+            case "vagoes_garagem":
+                str_lista = ControllerCMD.listar_veiculos_garagem()
+                str_quant = ControllerCMD.get_quant_veiculos_garagem()
+                str_final = str_quant + "\n" + str_lista
+                areaTexto.text = str_final
+            case "trens_garagem":
+                str_lista = ControllerCMD.listar_trens_garagem()
+                str_quant = ControllerCMD.get_quant_trens_garagem()
+                str_final = str_quant + "\n" + str_lista
+                areaTexto.text = str_final
+            case "veiculos_garagem":
+                str_lista = ControllerCMD.listar_veiculos_garagem()
+                str_quant = ControllerCMD.get_quant_veiculos_garagem()
+                str_final = str_quant + "\n" + str_lista
+                areaTexto.text = str_final
+            case "locomotivas_trem":
+                str_lista = ControllerCMD.listar_locomotivas_garagem()
+                str_quant = ControllerCMD.get_quant_locomotivas_garagem()
+                str_final = str_quant + "\n" + str_lista
+                areaTexto.text = str_final
+            case "vagoes_garagem":
+                str_lista = ControllerCMD.listar_vagoes_garagem()
+                str_quant = ControllerCMD.get_quant_vagoes_garagem()
+                str_final = str_quant + "\n" + str_lista
+                areaTexto.text = str_final
+
     def compose(self) -> ComposeResult:
-
-        def on_button_pressed(self, event: Button.Pressed):
-            areaTexto = self.screen.query_selector("#resultado", TextArea)
-            match event.button.id:
-                case "locomotivas_garagem":
-                    str_lista = ControllerCMD.listar_locomotivas_garagem()
-                    str_quant = ControllerCMD.get_quant_locomotivas_garagem()
-                    str_final = str_quant + "\n" + str_lista
-                    areaTexto.text = str_final
-                case "vagoes_garagem":
-                    str_lista = ControllerCMD.listar_veiculos_garagem()
-                    str_quant = ControllerCMD.get_quant_veiculos_garagem()
-                    str_final = str_quant + "\n" + str_lista
-                    areaTexto.text = str_final
-                case "trens_garagem":
-                    str_lista = ControllerCMD.listar_trens_garagem()
-                    str_quant = ControllerCMD.get_quant_trens_garagem()
-                    str_final = str_quant + "\n" + str_lista
-                    areaTexto.text = str_final
-                case "veiculos_garagem":
-                    str_lista = ControllerCMD.listar_veiculos_garagem()
-                    str_quant = ControllerCMD.get_quant_veiculos_garagem()
-                    str_final = str_quant + "\n" + str_lista
-                    areaTexto.text = str_final
-                case "locomotivas_trem":
-                    str_lista = ControllerCMD.listar_locomotivas_garagem()
-                    str_quant = ControllerCMD.get_quant_locomotivas_garagem()
-                    str_final = str_quant + "\n" + str_lista
-                    areaTexto.text = str_final
-                case "vagoes_garagem":
-                    str_lista = ControllerCMD.listar_vagoes_garagem()
-                    str_quant = ControllerCMD.get_quant_vagoes_garagem()
-                    str_final = str_quant + "\n" + str_lista
-                    areaTexto.text = str_final
-
         yield Button("Locomotivas na garagem", id="locomotivas_garagem")
         yield Button("Vagões na garagem", id="vagoes_garagem")
         yield Button("Trens na garagem", id="trens_garagem")
