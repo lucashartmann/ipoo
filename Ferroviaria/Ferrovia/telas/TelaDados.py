@@ -8,7 +8,7 @@ from controller.ControllerCMD import ControllerCMD
 class WidgetsDados(HorizontalGroup):
 
     def on_button_pressed(self, event: Button.Pressed):
-        areaTexto = self.screen.query_selector("#resultado", TextArea)
+        areaTexto = self.screen.query_one("#resultado", TextArea)
         match event.button.id:
             case "locomotivas_garagem":
                 str_lista = ControllerCMD.listar_locomotivas_garagem()
@@ -47,7 +47,7 @@ class WidgetsDados(HorizontalGroup):
         yield Button("Trens na garagem", id="trens_garagem")
         yield Button("Todos os veiculos na garagem", id="veiculos_garagem")
         yield Button("Locomotivas no trem", id="locomotivas_trem")
-        yield Button("Vagões no trem", id="vagoes_garagem")
+        yield Button("Vagões no trem", id="vagoes_trem")
 
 
 class TelaDados(Screen):

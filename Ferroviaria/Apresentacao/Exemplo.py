@@ -2,6 +2,7 @@ from textual.app import App, ComposeResult
 from textual.widgets import Button, Header, Footer
 from textual.screen import Screen
 
+# python Exemplo.py
 
 class SegundaTela(Screen):
     def compose(self) -> ComposeResult:
@@ -11,7 +12,7 @@ class SegundaTela(Screen):
 
 class Tela(App):
 
-    def on_button_pressed(self, event: Button.Pressed) -> None:
+    def on_button_pressed(self, event: Button.Pressed):
         if event.button.id == "pressionado":
             self.app.push_screen(SegundaTela())
 

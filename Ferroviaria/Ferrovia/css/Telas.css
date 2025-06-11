@@ -1,63 +1,60 @@
 /* TELA INICIAL */
+TelaInicial {
+    margin: 8 0 0 40;
+    height: 100%;
+    width: 70%;
 
-TelaInicial{
-    margin: 8 0 0 53;
-    align: center middle;
-    background: saddlebrown;
-    height: 90%;
-    width: 60%;
 }
 
-
 .tela_inicial Button {
-    margin: 10 0 0 15;    
-    height: 4;
-    width: 5;
-    text-align: center;
+    margin: 2 0 0 0;
+    height: 6;
+    width: 90%;
+    min-width: 20w;
+    border: none;
 }
 
 /* TELA VAGÃO */
-
-#peso_vagao {
-    width: 120vh;
-    height: 100%;
+#peso_vagao, #combustivel_locomotiva, #peso_locomotiva {
+    width: 70%;
+    min-width: 20w;
+    height: 3;
+    margin: 1 0 1 0;
+    border: solid;
 }
 
-#label_peso_vagao {
-    margin: 1 2 0 0;
+#label_peso_vagao, #label_combustivel_locomotiva, #label_peso_locomotiva {
+    margin: 1 0 1 0;
+    text-style: bold;
 }
 
-#peso_vagao {
-    margin: 0 2 0 0;
+TelaCadastroVagao, TelaCadastroTrem, TelaCadastroLocomotiva {
+    margin: 3 0 0 0;
+    align-horizontal: center;
+    align-vertical: middle;
+    padding: 2 2;
 }
 
-TelaCadastroVagao, TelaCadastroTrem {
-    margin: 8 0 0 0;
-    align: center middle;
-}
-
-
-#mensagem {
-    margin: 0 0 3 0;
-    height: 22%;
+#mensagem, #resultado {
+    margin: 2 0 2 0;
+    height: 18;
+    width: 96%;
+    padding: 1;
 }
 
 /* TELA LOCOMOTIVA */
-
-#label_combustivel_locomotiva, #label_peso_locomotiva {
-    width: 120vh;
-    height: 10%;
-}
-
-TelaCadastroLocomotiva {
-    margin: 8 0 0 0;
-    padding-top: 0;
-}
-
 Checkboxes {
-    margin: 0;
+    margin: 1 0 1 0;
+    layout: horizontal;
 }
 
 .checkboxes_container {
-    margin: 0 20 0 20;
+    margin: 0 2 0 2;
+}
+
+/* FOOTER E HEADER */
+Header, Footer {
+    margin: 1 0 1 0;
+    padding: 1 2;
+    text-style: bold;
 }

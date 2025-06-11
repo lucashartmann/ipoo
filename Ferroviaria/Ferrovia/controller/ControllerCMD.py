@@ -145,25 +145,134 @@ class ControllerCMD:
         trem.esvaziar()
         View.View.mostrar_mensagem("Trem esvaziado com sucesso!", trem)
 
-    def listar_trens():
+    def listar_trens_garagem():
+        if ControllerCMD.get_garagem().get_quant_trens() == 0:
+            View.View.mostrar_mensagem("Não há trens na garagem")
+            return "Não há trens na garagem"
         View.View.mostrar_mensagem("TRENS NA GARAGEM:")
         View.View.mostrar_mensagem(
             ControllerCMD.ControllerCMD.get_garagem().get_lista_trens())
+        return "".join(ControllerCMD.get_garagem().get_lista_trens())
 
-    def listar_locomotivas():
+    def listar_locomotivas_garagem():
+        if ControllerCMD.get_garagem().get_quant_locomotivas() == 0:
+            View.View.mostrar_mensagem("Não há locomotivas na garagem")
+            return "Não há locomotivas na garagem"
         View.View.mostrar_mensagem("LOCOMOTIVAS NA GARAGEM:")
         View.View.mostrar_mensagem(
             ControllerCMD.get_garagem().get_lista_locomotivas())
+        return "".join(ControllerCMD.get_garagem().get_lista_locomotivas())
 
-    def listar_vagoes():
+    def listar_vagoes_garagem():
+        if ControllerCMD.get_garagem().get_quant_vagoes() == 0:
+            View.View.mostrar_mensagem("Não há vagões na garagem")
+            return "Não há vagões na garagem"
         View.View.mostrar_mensagem("VAGÕES NA GARAGEM:")
         View.View.mostrar_mensagem(
             ControllerCMD.get_garagem().get_lista_vagoes())
+        return "".join(ControllerCMD.get_garagem().get_lista_vagoes())
 
-    def listar_veiculos():
+    def listar_veiculos_garagem():
         veiculos = ControllerCMD.get_garagem().get_veiculos_ferroviarios()
         if not veiculos:
             View.View.mostrar_mensagem("Não há veículos na garagem")
+            return "Não há veículos na garagem"
         else:
             View.View.mostrar_mensagem("VEÍCULOS NA GARAGEM:")
             View.View.mostrar_itens_da_lista(veiculos)
+            return "".join([str(veiculo) + "\n" for veiculo in veiculos])
+            
+    def get_quant_locomotivas_garagem():
+        quant = ControllerCMD.get_garagem().get_quant_locomotivas()
+        if quant == 0:
+            return "Não há locomotivas na garagem"
+        else:
+            return f"Quantidade de locomotivas na garagem: {quant}"
+    
+    def get_quant_vagoes_garagem():
+        quant = ControllerCMD.get_garagem().get_quant_vagoes()
+        if quant == 0:
+            return "Não há vagões na garagem"
+        else:
+            return f"Quantidade de vagões na garagem: {quant}"
+    
+    def get_quant_trens_garagem():
+        quant = ControllerCMD.get_garagem().get_quant_trens()
+        if quant == 0:
+            return "Não há trens na garagem"
+        else:
+            return f"Quantidade de trens na garagem: {quant}"
+        
+    def get_quant_veiculos_garagem():
+        quant = ControllerCMD.get_garagem().get_quant_veiculos()
+        if quant == 0:
+            return "Não há veículos na garagem"
+        else:
+            return f"Quantidade de veículos na garagem: {quant}"
+    
+    def get_quant_locomotivas_trem():
+        trem = ControllerCMD.get_garagem().get_trem()
+        if trem is None:
+            return "Não há trens na garagem"
+        quant = trem.get_quant_locomotivas()
+        if quant == 0:
+            return "Não há locomotivas no trem"
+        else:
+            return f"Quantidade de locomotivas no trem: {quant}"
+        
+    def get_quant_vagoes_trem():
+        trem = ControllerCMD.get_garagem().get_trem()
+        if trem is None:
+            return "Não há trens na garagem"
+        quant = trem.get_quant_vagoes()
+        if quant == 0:
+            return "Não há vagões no trem"
+        else:
+            return f"Quantidade de vagões no trem: {quant}"
+        
+    def listar_locomotivas_trem():
+        trem = ControllerCMD.get_garagem().get_trem()
+        if trem is None:
+            View.View.mostrar_mensagem("Não há trens na garagem")
+            return
+        locomotivas = trem.get_locomotivas()
+        if not locomotivas:
+            View.View.mostrar_mensagem("Não há locomotivas no trem")
+        else:
+            View.View.mostrar_mensagem("LOCOMOTIVAS NO TREM:")
+            View.View.mostrar_itens_da_lista(locomotivas)
+    
+    def listar_vagoes_trem():
+        trem = ControllerCMD.get_garagem().get_trem()
+        if trem is None:
+            View.View.mostrar_mensagem("Não há trens na garagem")
+            return
+        vagoes = trem.get_vagoes()
+        if not vagoes:
+            View.View.mostrar_mensagem("Não há vagões no trem")
+        else:
+            View.View.mostrar_mensagem("VAGÕES NO TREM:")
+            View.View.mostrar_itens_da_lista(vagoes)
+            
+    def listar_veiculos_trem():
+        trem = ControllerCMD.get_garagem().get_trem()
+        if trem is None:
+            View.View.mostrar_mensagem("Não há trens na garagem")
+            return
+        veiculos = trem.get_veiculos()
+        if not veiculos:
+            View.View.mostrar_mensagem("Não há veículos no trem")
+        else:
+            View.View.mostrar_mensagem("VEÍCULOS NO TREM:")
+            View.View.mostrar_itens_da_lista(veiculos)
+            
+    def get_quant_veiculos_trem():
+        trem = ControllerCMD.get_garagem().get_trem()
+        if trem is None:
+            return "Não há trens na garagem"
+        quant = trem.get_quant_veiculos()
+        if quant == 0:
+            return "Não há veículos no trem"
+        else:
+            return f"Quantidade de veículos no trem: {quant}"
+    
