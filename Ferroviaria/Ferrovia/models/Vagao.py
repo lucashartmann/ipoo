@@ -1,11 +1,18 @@
 class Vagao:
     id = 0
 
-    def __init__(self, peso):
+    def __init__(self, peso_max):
         self.id = Vagao.id
-        self.peso = peso
-        # passageiros = []
-        # self.peso += passageiro.get_peso()
+        self.peso_max = peso_max
+        self.peso_atual = 0
+        self.quant_passageiros = 0
+        self.quant_assentos = 0
+
+    def carregar(self, carga):
+        self.peso_atual += carga
+
+    def descarregar(self, carga):
+        self.peso_atual -= carga
 
     def get_peso(self):
         try:

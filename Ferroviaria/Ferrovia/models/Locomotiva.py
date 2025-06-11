@@ -5,7 +5,8 @@ class Locomotiva:
         self.id = self.gerar_id()
         self.quant_combustivel = quant_combustivel
         self.peso = peso
-        # potencia
+        self.potencia = 0
+        tipo_combustivel = ""
 
     def gerar_id(self):
         Locomotiva.id += 1

@@ -6,8 +6,6 @@ class Trem:
 
     def __init__(self):
         self.id = self.gerar_id()
-        # self.capacidade_passageiros = capacidade_passageiros
-        # self.quant_passageiros = 0
         # self.quant_vagoes = 0
         # self.quant_locomotivas = 0
         # self.quant_max_vagoes_suportados = 0
@@ -83,13 +81,12 @@ class Trem:
 
     def esvaziar(self):
         self.trem.clear()
-        
+
     def possui_locomotiva(self):
         for veiculo in self.trem:
             if type(veiculo) == Locomotiva.Locomotiva:
                 return True
         return False
-
 
     def __str__(self):
         string_veiculo = " <- ".join(str(veiculo)

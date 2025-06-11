@@ -82,11 +82,9 @@ class Garagem:
 
     def get_quant_trens(self):
         return len(self.get_lista_trens())
-    
+
     def get_quant_locomotivas(self):
         return len(self.get_lista_locomotivas())
-    
+
     def get_quant_vagoes(self):
         return len(self.get_lista_vagoes())
-    
-    

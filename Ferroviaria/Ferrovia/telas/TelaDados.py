@@ -4,6 +4,8 @@ from textual.widgets import Button, Header, Footer, TextArea
 from textual.screen import Screen
 from controller.ControllerCMD import ControllerCMD
 
+# python -m telas.TelaInicial
+
 
 class WidgetsDados(HorizontalGroup):
 
@@ -40,6 +42,8 @@ class WidgetsDados(HorizontalGroup):
                 str_quant = ControllerCMD.get_quant_vagoes_garagem()
                 str_final = str_quant + "\n" + str_lista
                 areaTexto.text = str_final
+            case "trocar_tela":
+                self.screen.app.pop_screen()
 
     def compose(self) -> ComposeResult:
         yield Button("Locomotivas na garagem", id="locomotivas_garagem")
@@ -48,6 +52,7 @@ class WidgetsDados(HorizontalGroup):
         yield Button("Todos os veiculos na garagem", id="veiculos_garagem")
         yield Button("Locomotivas no trem", id="locomotivas_trem")
         yield Button("Vagões no trem", id="vagoes_trem")
+        yield Button("Voltar", id="trocar_tela")
 
 
 class TelaDados(Screen):
