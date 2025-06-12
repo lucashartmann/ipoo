@@ -1,9 +1,10 @@
 class Vagao:
     id = 0
 
-    def __init__(self, peso_max):
+    def __init__(self, peso):
         self.id = Vagao.id
-        self.peso_max = peso_max
+        self.peso_max = 0
+        self.peso = peso
         self.peso_atual = 0
         self.quant_passageiros = 0
         self.quant_assentos = 0

@@ -15,7 +15,7 @@ TelaInicial {
 }
 
 /* TELA VAGÃO */
-#peso_vagao, #combustivel_locomotiva, #peso_locomotiva {
+#input_peso_vagao, #input_combustivel_locomotiva, #input_peso_locomotiva {
     width: 70%;
     min-width: 20w;
     height: 3;
@@ -40,6 +40,11 @@ TelaCadastroVagao, TelaCadastroTrem, TelaCadastroLocomotiva {
     height: 18;
     width: 96%;
     padding: 1;
+}
+
+#textArea_Trem {
+    height: 30;
+    width: 90%;
 }
 
 /* TELA LOCOMOTIVA */

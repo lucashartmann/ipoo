@@ -5,6 +5,7 @@ from telas.TelaVagao import TelaVagao
 from telas.TelaLocomotiva import TelaLocomotiva
 from telas.TelaTrem import TelaTrem
 from telas.TelaDados import TelaDados
+from controller.ControllerCMD import ControllerCMD
 
 # python -m telas.TelaInicial
 
@@ -40,6 +41,7 @@ class TelaApp(App):
     BINDINGS = [("d", "toggle_dark", "Toggle dark mode")]
 
     def compose(self) -> ComposeResult:
+        ControllerCMD.init()
         yield Header()
         yield Footer()
         yield VerticalScroll(TelaInicial())

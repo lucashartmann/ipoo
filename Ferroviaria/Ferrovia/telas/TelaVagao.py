@@ -11,7 +11,7 @@ class TelaCadastroVagao(HorizontalGroup):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "cadastrar":
-            peso = float(self.query_one("#peso_vagao", Input).value)
+            peso = float(self.query_one("#input_peso_vagao", Input).value)
             mensagem = ControllerCMD.adicionar_vagao(peso)
             areaTexto = self.screen.query_one("#mensagem", TextArea)
             areaTexto.text = mensagem
@@ -21,7 +21,7 @@ class TelaCadastroVagao(HorizontalGroup):
 
     def compose(self) -> ComposeResult:
         yield Label("Digite o peso do vagão:", id="label_peso_vagao")
-        yield Input("Digite aqui", id="peso_vagao")
+        yield Input("Digite aqui", id="input_peso_vagao")
         yield Button("Cadastrar", id="cadastrar")
         yield Button("Voltar", id="trocar_tela")
 

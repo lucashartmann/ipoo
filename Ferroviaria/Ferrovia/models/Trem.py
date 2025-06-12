@@ -91,4 +91,4 @@ class Trem:
     def __str__(self):
         string_veiculo = " <- ".join(str(veiculo)
                                      for veiculo in self.get_trem())
-        return f"Trem[{self.get_id()}]: [{string_veiculo}] "
+        return f"Trem [id = {self.get_id()}]: [{string_veiculo}] "

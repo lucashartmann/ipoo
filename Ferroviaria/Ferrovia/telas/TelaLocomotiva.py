@@ -11,9 +11,9 @@ class TelaCadastroLocomotiva(HorizontalGroup):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "cadastrar":
-            peso = float(self.query_one("#peso_locomotiva", Input).value)
+            peso = float(self.query_one("#input_peso_locomotiva", Input).value)
             combustivel = float(self.query_one(
-                "#combustivel_locomotiva", Input).value)
+                "#input_combustivel_locomotiva", Input).value)
             mensagem = ControllerCMD.adicionar_locomotiva(combustivel, peso)
             areaTexto = self.screen.query_one("#mensagem", TextArea)
             areaTexto.text = mensagem
@@ -26,8 +26,8 @@ class TelaCadastroLocomotiva(HorizontalGroup):
             yield Label("Digite a quantidade de combustível da locomotiva:", id="label_combustivel_locomotiva")
             yield Label("Digite o peso da locomotiva:", id="label_peso_locomotiva")
         with VerticalScroll():
-            yield Input("Digite aqui", id="combustivel_locomotiva")
-            yield Input("Digite aqui", id="peso_locomotiva")
+            yield Input("Digite aqui", id="input_combustivel_locomotiva")
+            yield Input("Digite aqui", id="input_peso_locomotiva")
         yield Button("Cadastrar", id="cadastrar")
         yield Button("Voltar", id="trocar_tela")
 

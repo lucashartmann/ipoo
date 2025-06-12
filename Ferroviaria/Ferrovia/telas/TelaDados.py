@@ -18,8 +18,8 @@ class WidgetsDados(HorizontalGroup):
                 str_final = str_quant + "\n" + str_lista
                 areaTexto.text = str_final
             case "vagoes_garagem":
-                str_lista = ControllerCMD.listar_veiculos_garagem()
-                str_quant = ControllerCMD.get_quant_veiculos_garagem()
+                str_lista = ControllerCMD.listar_vagoes_garagem()
+                str_quant = ControllerCMD.get_quant_vagoes_garagem()
                 str_final = str_quant + "\n" + str_lista
                 areaTexto.text = str_final
             case "trens_garagem":
@@ -33,13 +33,13 @@ class WidgetsDados(HorizontalGroup):
                 str_final = str_quant + "\n" + str_lista
                 areaTexto.text = str_final
             case "locomotivas_trem":
-                str_lista = ControllerCMD.listar_locomotivas_garagem()
-                str_quant = ControllerCMD.get_quant_locomotivas_garagem()
+                str_lista = ControllerCMD.listar_locomotivas_trem()
+                str_quant = ControllerCMD.get_quant_locomotivas_trem()
                 str_final = str_quant + "\n" + str_lista
                 areaTexto.text = str_final
             case "vagoes_garagem":
-                str_lista = ControllerCMD.listar_vagoes_garagem()
-                str_quant = ControllerCMD.get_quant_vagoes_garagem()
+                str_lista = ControllerCMD.listar_vagoes_trem()
+                str_quant = ControllerCMD.get_quant_vagoes_trem()
                 str_final = str_quant + "\n" + str_lista
                 areaTexto.text = str_final
             case "trocar_tela":
