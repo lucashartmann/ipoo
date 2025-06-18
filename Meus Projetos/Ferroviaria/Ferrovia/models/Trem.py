@@ -37,7 +37,7 @@ class Trem:
             if type(veiculo) == Vagao.Vagao:
                 vagoes.append(veiculo)
         return vagoes
-
+    
     def get_peso_suportado(self):
         try:
             return self.peso_suportado
@@ -87,8 +87,15 @@ class Trem:
             if type(veiculo) == Locomotiva.Locomotiva:
                 return True
         return False
+    
+    def get_quant_veiculos(self):
+        cont = 0
+        for veiculo in self.trem:
+            cont += 1
+        return cont
 
     def __str__(self):
-        string_veiculo = " <- ".join(str(veiculo)
-                                     for veiculo in self.get_trem())
-        return f"Trem [id = {self.get_id()}]: [{string_veiculo}] "
+        if self.get_quant_veiculos() > 0:
+            string_veiculo = " <- ".join(str(veiculo) for veiculo in self.get_trem())
+            return f"Trem [id = {self.get_id()}, peso: {self.get_peso_atual()}]: [{string_veiculo}] "
+        return f"Trem [id = {self.get_id()}] = []"

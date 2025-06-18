@@ -1,5 +1,5 @@
 from textual.app import ComposeResult
-from textual.containers import HorizontalGroup, VerticalScroll
+from textual.containers import HorizontalGroup, VerticalScroll, Vertical, Horizontal
 from textual.widgets import Button, Footer, Header, TextArea, Label, Checkbox, Input
 from controller.ControllerCMD import ControllerCMD
 from textual.screen import Screen
@@ -7,7 +7,7 @@ from textual.screen import Screen
 # python -m telas.TelaInicial
 
 
-class TelaCadastroLocomotiva(HorizontalGroup):
+class TelaLocomotiva(Screen):
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "cadastrar":
@@ -21,32 +21,30 @@ class TelaCadastroLocomotiva(HorizontalGroup):
         elif event.button.id == "trocar_tela":
             self.screen.app.pop_screen()
 
-    def compose(self) -> ComposeResult:
-        with VerticalScroll():
-            yield Label("Digite a quantidade de combustível da locomotiva:", id="label_combustivel_locomotiva")
-            yield Label("Digite o peso da locomotiva:", id="label_peso_locomotiva")
-        with VerticalScroll():
-            yield Input("Digite aqui", id="input_combustivel_locomotiva")
-            yield Input("Digite aqui", id="input_peso_locomotiva")
-        yield Button("Cadastrar", id="cadastrar")
-        yield Button("Voltar", id="trocar_tela")
-
-
-class Checkboxes(HorizontalGroup):
-    def compose(self) -> ComposeResult:
-        yield Checkbox("Gasolina", id="gasolina")
-        yield Checkbox("Vapor", id="vapor")
-        yield Checkbox("Bateria", id="bateria")
-
-
-class TelaLocomotiva(Screen):
-
-    CSS_PATH = "../css/Telas.css"
+    CSS_PATH = "../css/Telas.tcss"
     BINDINGS = [("d", "toggle_dark", "Toggle dark mode")]
 
     def compose(self) -> ComposeResult:
         yield Header()
-        yield VerticalScroll(TelaCadastroLocomotiva(), Checkboxes())
+        yield HorizontalGroup(
+            Vertical(
+                Label("Digite a quantidade de combustível da locomotiva:",
+                      id="label_combustivel_locomotiva"),
+                Label("Digite o peso da locomotiva:",
+                      id="label_peso_locomotiva"),
+            ),
+            Vertical(
+                Input("Digite aqui", id="input_combustivel_locomotiva"),
+                Input("Digite aqui", id="input_peso_locomotiva"),
+                Button("Cadastrar", id="cadastrar"),
+                Button("Voltar", id="trocar_tela"),
+            ),
+        )
+        yield HorizontalGroup(
+            Checkbox("Gasolina", id="gasolina"),
+            Checkbox("Vapor", id="vapor"),
+            Checkbox("Bateria", id="bateria"),
+        )
         yield TextArea(id="mensagem", disabled=True)
         yield Footer()
 

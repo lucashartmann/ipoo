@@ -1,5 +1,5 @@
 from textual.app import App, ComposeResult
-from textual.containers import HorizontalGroup, VerticalScroll
+from textual.containers import Horizontal, HorizontalGroup, VerticalScroll, Vertical
 from textual.widgets import Button, Footer, Header
 from telas.TelaVagao import TelaVagao
 from telas.TelaLocomotiva import TelaLocomotiva
@@ -10,7 +10,10 @@ from controller.ControllerCMD import ControllerCMD
 # python -m telas.TelaInicial
 
 
-class TelaInicial(HorizontalGroup):
+class TelaApp(App):
+
+    CSS_PATH = "../css/Telas.tcss"
+    BINDINGS = [("d", "toggle_dark", "Toggle dark mode")]
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "cadastrar_vagao":
@@ -24,31 +27,26 @@ class TelaInicial(HorizontalGroup):
         elif event.button.id == "dados":
             self.app.push_screen(TelaDados())
 
-    def compose(self) -> ComposeResult:
-        self.add_class("tela_inicial")
-        with VerticalScroll():
-            yield Button("Cadastrar Vagão", id="cadastrar_vagao")
-            yield Button("Cadastrar Locomotiva", id="cadastrar_locomotiva")
-        with VerticalScroll():
-            yield Button("Cadastrar Trem", id="cadastrar_trem")
-            yield Button("Dados", id="dados")
-            yield Button("Sair", id="sair")
-
-
-class TelaApp(App):
-
-    CSS_PATH = "../css/Telas.css"
-    BINDINGS = [("d", "toggle_dark", "Toggle dark mode")]
-
-    def compose(self) -> ComposeResult:
-        ControllerCMD.init()
-        yield Header()
-        yield Footer()
-        yield VerticalScroll(TelaInicial())
-
     def action_toggle_dark(self) -> None:
         self.theme = (
             "textual-dark" if self.theme == "textual-light" else "textual-light"
+        )
+
+    def compose(self) -> ComposeResult:
+        ControllerCMD.init()
+        yield VerticalScroll(
+            Horizontal(
+                Vertical(
+                    Button("Cadastrar Vagão", id="cadastrar_vagao"),
+                    Button("Cadastrar Locomotiva", id="cadastrar_locomotiva"),
+                ),
+                Vertical(
+                    Button("Cadastrar Trem", id="cadastrar_trem"),
+                    Button("Dados", id="dados"),
+                ),
+            ),
+            Button("Sair", id="sair"),
+            id="container_inicial"
         )
 
 

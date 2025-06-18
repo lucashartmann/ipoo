@@ -51,7 +51,7 @@ class Garagem:
         return self.quant_veiculos_ferroviarios
 
     def get_veiculo_por_id(self, id):
-        for veiculo in self.get_veiculos_ferroviarios:
+        for veiculo in self.veiculos_ferroviarios:
             if veiculo.get_id() == id:
                 return veiculo
         return None
@@ -88,3 +88,5 @@ class Garagem:
 
     def get_quant_vagoes(self):
         return len(self.get_lista_vagoes())
+    
+    

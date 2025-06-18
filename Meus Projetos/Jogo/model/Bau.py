@@ -10,7 +10,6 @@ class Bau:
 
     def init(self):
         quant_itens_no_bau = int(random.randrange(0, 10))
-
         for i in range(quant_itens_no_bau):
             item = Item.Item()
             quant_certo_item = int(random.randrange(0, 5))
@@ -18,7 +17,21 @@ class Bau:
                 item.set_quant(quant_certo_item)
                 self.itens_no_bau.append(item)
                 i += 1
-
+    
+    def guardar(self, item, quant):
+        item.set_quant(item.get_quant() - quant)
+        if item in self.itens_no_bau:
+            item.set_quant(item.get_quant() + quant)
+        else:
+            self.itens_no_bau.append(item)
+            
+    def get_item(self, nome):
+        for item in self.itens_no_bau:
+            if nome in item.get_nome():
+                self.itens_no_bau.remove(item)
+                return item
+        
+        
     def get_lista_itens(self):
         return Bau.itens
 

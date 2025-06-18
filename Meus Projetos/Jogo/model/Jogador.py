@@ -11,7 +11,7 @@ class Jogador:
 
     def atacar(self, inimigo, item):
         dano = item.get_dano()
-        vida_inimigo = item.get_dano() - inimigo.get_vida()
-        inimigo.set_vida(vida_inimigo)
+        vida_restante_inimigo = item.get_dano() - inimigo.get_vida()
+        inimigo.set_vida(vida_restante_inimigo)
         self.mana = self.mana - (item.get_dano() * 0.2)
-        return (dano, vida_inimigo)
+        return (dano, vida_restante_inimigo)

@@ -31,4 +31,4 @@ class Locomotiva:
             return 0
 
     def __str__(self):
-        return f"Locomotiva [id = {self.get_id()}, peso = {self.get_peso()}]"
+        return f"Locomotiva [id = {self.get_id()}, combustivel = {self.get_quant_combustivel()}, peso = {self.get_peso()}]"
