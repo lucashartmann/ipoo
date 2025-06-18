@@ -2,10 +2,6 @@ class Sala:
 
     def __init__(self, nome):
         self.nome = nome
-        self.esquerda = None
-        self.direita = None
-        self.baixo = None
-        self.cima = None
 
     def get_nome(self):
         return self.nome
@@ -35,4 +31,14 @@ class Sala:
         self.baixo = sala
 
     def __str__(self):
-        return f"Sala [Nome: {self.get_nome()}, esquerda = {self.get_esquerda()}, direita = {self.get_direita()}, baixo = {self.get_baixo()}, cima = {self.get_cima()}]"
+        str = f"Sala [Nome: {self.get_nome()}"
+        if self.get_baixo():
+            str += f", baixo = {self.get_baixo()}"
+        if self.get_cima():
+            str += f", cima = {self.get_cima()}"
+        if self.get_direita():
+            str += f", direita = {self.get_direita()}"
+        if self.get_esquerda():
+            str += f", esquerda = {self.get_esquerda()}"
+        str += "]"
+        return str

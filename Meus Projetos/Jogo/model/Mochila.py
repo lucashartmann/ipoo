@@ -21,3 +21,6 @@ class Mochila:
                 self.mochila.remove(item)
             else:
                 item.set_quant((item.get_quant() - quant))
+
+    def __str__(self):
+        return f"Mochila [{" , ".join(str(item) for item in self.get_mochila())}"

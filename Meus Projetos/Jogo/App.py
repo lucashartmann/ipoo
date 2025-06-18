@@ -2,16 +2,24 @@ from model import Mochila
 from model import Item
 from model import Bau
 from model import Sala
+import View
+import Controller
+import sys
 
-mochila1 = Mochila.Mochila()
-item1 = Item.Item()
-item2 = Item.Item()
-bau1 = Bau.Bau()
+Controller.init()
+Controller.carregar_bau()
 
-sala1 = Sala.Sala("Sala Inicial")
-sala2 = Sala.Sala("Sala de Baús")
+comando = sys.argv[1::]
 
-sala1.set_direita(sala2)
+# python App.py ver_bau
+ 
+match comando:
+    case["ver_bau"]:
+        Controller.ver_bau()
+    case ["pegar_item_bau", item, quant]:
+        Controller.pegar_item_bau(item, quant)
 
-print(item1)
-print(item2)
+Controller.salvar_bau()
+    
+
+
