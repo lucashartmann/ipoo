@@ -25,8 +25,7 @@ class TelaLocomotiva(Screen):
     BINDINGS = [("d", "toggle_dark", "Toggle dark mode")]
 
     def compose(self) -> ComposeResult:
-        yield Header()
-        yield HorizontalGroup(
+        yield Horizontal(
             Vertical(
                 Label("Digite a quantidade de combustível da locomotiva:",
                       id="label_combustivel_locomotiva"),
@@ -36,17 +35,17 @@ class TelaLocomotiva(Screen):
             Vertical(
                 Input("Digite aqui", id="input_combustivel_locomotiva"),
                 Input("Digite aqui", id="input_peso_locomotiva"),
-                Button("Cadastrar", id="cadastrar"),
-                Button("Voltar", id="trocar_tela"),
             ),
+            Button("Cadastrar", id="cadastrar"),
+            Button("Voltar", id="trocar_tela"),
         )
-        yield HorizontalGroup(
+        yield Horizontal(
             Checkbox("Gasolina", id="gasolina"),
             Checkbox("Vapor", id="vapor"),
             Checkbox("Bateria", id="bateria"),
         )
         yield TextArea(id="mensagem", disabled=True)
-        yield Footer()
+        self.styles.align = ("center","middle")
 
     def action_toggle_dark(self) -> None:
         self.theme = (

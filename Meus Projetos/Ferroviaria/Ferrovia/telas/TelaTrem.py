@@ -43,8 +43,6 @@ class TelaTrem(Screen):
         areaTrens.text = lista_trens
 
     def compose(self) -> ComposeResult:
-
-        yield Header()
         yield HorizontalGroup(
             Button("Criar Trem", id="cadastrar"),
             Button("Voltar", id="trocar_tela"),
@@ -63,7 +61,6 @@ class TelaTrem(Screen):
             TextArea(id="textArea_trem_vagoes", disabled=True),
             TextArea(id="textArea_trem_trens", disabled=True),
         )
-        yield Footer()
 
     def on_mount(self) -> None:
         self.definir_locomotivas()

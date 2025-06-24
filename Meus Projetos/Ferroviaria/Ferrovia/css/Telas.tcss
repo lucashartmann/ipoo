@@ -66,8 +66,35 @@ Checkboxes {
     layout: horizontal;
 }
 
+#label_combustivel_locomotiva, #label_peso_locomotiva {
+    margin: 0 0 0 0
+}
+
+#input_combustivel_locomotiva, #input_peso_locomotiva {
+    margin: 0 0 0 0
+}
+
 .checkboxes_container {
     margin: 0 2 0 2;
+}
+
+TelaLocomotiva Button {
+    width: 15%;
+    height: 4;
+    text-align: center;
+    margin: 0 0 0 0;
+    align: left middle;
+}
+
+.container_TelaLocomotiva {
+    text-align: center;
+    align-horizontal: center;
+    align-vertical: middle;
+}
+
+TelaLocomotiva {
+    align-horizontal: center;
+    align-vertical: middle;
 }
 
 /* TELA TREM */
@@ -95,7 +122,7 @@ Checkboxes {
 }
 
 #container_engatar{
-    margin: 2 0 2 0;
+    margin: 0 0 5 0;
     align-horizontal: center;
     align-vertical: middle;
 }
@@ -105,12 +132,32 @@ Checkboxes {
     align-vertical: middle;
 }
 
+#engatar {
+    margin: 0 0 0 0 
+}
+
 TelaTrem {
     align-horizontal: center;
     align-vertical: middle;
     text-align: center;
     width: 100%;
     height: 100%;
+}
+
+TelaTrem Button {
+    width: 15%;
+    height: 4;
+    text-align: center;
+}
+
+TelaTrem Input {
+    border: solid;
+}
+
+/* TELA DADOS */
+
+TelaDados Button {
+    width: 15%;
 }
 
 /* FOOTER E HEADER */
