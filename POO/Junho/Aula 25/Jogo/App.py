@@ -3,6 +3,8 @@ from models.Personagem import Mago
 from models.Personagem import Guerreiro
 from models.Personagem import Personagem
 from models.Item import Item
+from textual.app import App, ComposeResult
+from textual.widgets import Input, Button, TextArea
 
 # python App.py
 
