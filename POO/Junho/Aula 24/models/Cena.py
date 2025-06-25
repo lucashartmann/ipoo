@@ -11,9 +11,8 @@ class Cena():
         self.leste = None
         self.oeste = None
 
-    def colocar_item(self, um_item, nome):
-        um_item.nome = nome
-        self.itens[nome] = um_item
+    def colocar_item(self, um_item):
+        self.itens[um_item.nome] = um_item
 
     def coletar_item(self, nome_item):
         # pegamos o item

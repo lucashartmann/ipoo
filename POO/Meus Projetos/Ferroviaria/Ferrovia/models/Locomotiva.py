@@ -2,7 +2,7 @@ class Locomotiva:
     id = 0
 
     def __init__(self, quant_combustivel, peso):
-        self.id = self.gerar_id()
+        self.id = Locomotiva.id
         self.quant_combustivel = quant_combustivel
         self.peso = peso
         self.potencia = 0

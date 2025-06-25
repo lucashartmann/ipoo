@@ -22,3 +22,9 @@
 - from textual.widgets import Button, Header, Footer: Importa widgets prontos do Textual, como botão, cabeçalho e rodapé, para usar na interface.
 
 - from textual.screen import Screen: Importa a classe usada para criar novas telas (ou páginas) dentro do aplicativo.
+
+
+def on_key(self, event):
+    if event.key == "space":
+        # Sua ação aqui
+        print("Barra de espaço pressionada!")

@@ -61,7 +61,7 @@ class ControllerCMD:
         return str
 
     def adicionar_trem():
-        trem = Trem()
+        trem = Trem.Trem()
         cadastro = ControllerCMD.get_garagem().estacionar(trem)
         if cadastro:
             View.View.mostrar_mensagem("Cadastro realizado com sucesso")
@@ -115,14 +115,16 @@ class ControllerCMD:
         if trem is None:
             View.View.mostrar_mensagem(f"Não existe trem com o id: {id_trem}")
             return
-        veiculo = ControllerCMD.get_garagem().get_veiculo_por_id(id_veiculo)
+        veiculo = trem.get_veiculo_por_id(id_veiculo)
         if veiculo is None:
             View.View.mostrar_mensagem(
                 f"Não existe veiculo com o id: {id_veiculo}")
             return f"Não existe veiculo com o id: {id_veiculo}"
-        desengatado = trem.desengatar(veiculo)
+        desengatado, lista = trem.desengatar(veiculo)
+        if lista is not None:
+            for veiculo_na_lista in lista:
+                ControllerCMD.get_garagem().estacionar(veiculo_na_lista)
         if desengatado:
-            ControllerCMD.get_garagem().estacionar(veiculo)
             View.View.mostrar_mensagem(f"{veiculo}, desengatado com sucesso!")
             return f"{veiculo}, desengatado com sucesso!"
         else:

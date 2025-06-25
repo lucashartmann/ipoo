@@ -14,8 +14,9 @@ class Garagem:
         if veiculo not in self.veiculos_ferroviarios and self.capacidade >= self.quant_veiculos_ferroviarios:
             self.veiculos_ferroviarios.append(veiculo)
             self.quant_veiculos_ferroviarios += 1
-            Garagem.id += 1
-            veiculo.id = Garagem.id
+            if veiculo.id <= 0:
+                Garagem.id += 1
+                veiculo.id = Garagem.id
             return True
         return False
 

@@ -40,7 +40,6 @@ class TelaDados(Screen):
         areaTexto.text = str_final
 
     def compose(self) -> ComposeResult:
-        yield Header()
         yield HorizontalGroup(
             Button("Locomotivas na garagem", id="locomotivas_garagem"),
             Button("Vagões na garagem", id="vagoes_garagem"),
@@ -48,5 +47,4 @@ class TelaDados(Screen):
             Button("Todos os veiculos na garagem", id="veiculos_garagem"),
             Button("Voltar", id="trocar_tela"),
         )
-        yield TextArea(id="resultado")
-        yield Footer()
+        yield TextArea(id="resultado", disabled=True)

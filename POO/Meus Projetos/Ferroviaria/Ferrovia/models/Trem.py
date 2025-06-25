@@ -5,7 +5,7 @@ class Trem:
     id = 0
 
     def __init__(self):
-        self.id = self.gerar_id()
+        self.id = Trem.id
         # self.quant_vagoes = 0
         # self.quant_locomotivas = 0
         # self.quant_max_vagoes_suportados = 0
@@ -59,6 +59,7 @@ class Trem:
         return False
 
     def desengatar(self, veiculo):
+        lista_veiculos = []
         try:
             index_veiculo = self.trem.index(veiculo)
             ultimo_index = len(self.trem) - 1
@@ -69,9 +70,10 @@ class Trem:
                 for veiculo_ferroviario in self.trem[index_veiculo:]:
                     self.trem.remove(veiculo_ferroviario)
                     self.peso_atual -= veiculo_ferroviario.get_peso()
-            return True
+                    lista_veiculos.append(veiculo_ferroviario)
+            return (True, lista_veiculos)
         except ValueError:
-            return False
+            return (False, lista_veiculos)
 
     def get_trem(self):
         try:
@@ -81,6 +83,12 @@ class Trem:
 
     def esvaziar(self):
         self.trem.clear()
+        
+    def get_veiculo_por_id(self, id):
+        for veiculo in self.trem:
+            if veiculo.get_id() == id:
+                return veiculo
+        return None
 
     def possui_locomotiva(self):
         for veiculo in self.trem:

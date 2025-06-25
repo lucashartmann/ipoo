@@ -3,7 +3,23 @@ from textual.containers import HorizontalGroup, VerticalScroll
 from textual.widgets import Button, Footer, Header, TextArea, Label, Input
 from controller.ControllerCMD import ControllerCMD
 from textual.screen import Screen
+from textual.events import Focus
 
+class InputEvento(Input):
+    def on_focus(self, event: Focus) -> None:
+        self.value = ""
+        
+    def _on_blur(self, event):
+        if not self.value:
+            self.value = "Veiculo"  
+        
+class InputEventoTrem(Input):
+    def on_focus(self, event: Focus) -> None:
+        self.value = ""
+        
+    def _on_blur(self, event):
+        if not self.value:
+            self.value = "Trem"
 
 class TelaTrem(Screen):
     CSS_PATH = "../css/Telas.tcss"
@@ -21,6 +37,20 @@ class TelaTrem(Screen):
             areaTexto = self.query_one("#textArea_engatar", TextArea)
             engatar = ControllerCMD.engatar(idTrem, idVeiculo)
             areaTexto.text = engatar
+            self.on_mount()
+            
+        if event.button.id == "desengatar":
+            idTrem = int(self.query_one("#input_trem_veiculo", Input).value)
+            idVeiculo = int(self.query_one("#input_trem", Input).value)
+            areaTexto = self.query_one("#textArea_engatar", TextArea)
+            desengatar = ControllerCMD.desengatar(idTrem, idVeiculo)
+            areaTexto.text = desengatar
+            self.on_mount()
+            
+        if event.button.id == "cadastrar":
+            cadastrar = ControllerCMD.adicionar_trem()
+            areaTexto = self.query_one("#textArea_engatar", TextArea)
+            areaTexto.text = cadastrar
             self.on_mount()
 
         if event.button.id == "trocar_tela":
@@ -50,9 +80,10 @@ class TelaTrem(Screen):
         )
         yield HorizontalGroup(
             Label("Digite aqui o id do: "),
-            Input("Trem", id="input_trem_veiculo"),
-            Input("Veiculo", id="input_trem"),
+            InputEventoTrem("Trem", id="input_trem_veiculo"),
+            InputEvento("Veiculo", id="input_trem"),
             Button("Engatar no Trem", id="engatar"),
+            Button("Desengatar", id="desengatar"),
             id="container_engatar2",
         )
         yield TextArea(disabled=True, id="textArea_engatar")
@@ -61,6 +92,7 @@ class TelaTrem(Screen):
             TextArea(id="textArea_trem_vagoes", disabled=True),
             TextArea(id="textArea_trem_trens", disabled=True),
         )
+        yield Button("Theme", id="theme")
 
     def on_mount(self) -> None:
         self.definir_locomotivas()

@@ -26,6 +26,10 @@ class TelaApp(App):
             self.app.exit()
         elif event.button.id == "dados":
             self.app.push_screen(TelaDados())
+        elif event.button.id == "theme":
+            self.theme = (
+                "textual-dark" if self.theme == "textual-light" else "textual-light"
+            )
 
     def action_toggle_dark(self) -> None:
         self.theme = (
@@ -46,8 +50,9 @@ class TelaApp(App):
                 ),
             ),
             Button("Sair", id="sair"),
-            id="container_inicial"
+            id="container_inicial",
         )
+        yield Button("Theme", id="theme")
 
 
 if __name__ == "__main__":

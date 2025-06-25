@@ -3,10 +3,17 @@ from textual.containers import HorizontalGroup, VerticalScroll, Horizontal
 from textual.widgets import Button, Footer, Header, TextArea, Label, Input
 from controller.ControllerCMD import ControllerCMD
 from textual.screen import Screen
-from textual.events import MouseCapture, MouseEvent, MouseDown, Focus
+from textual.events import InputEvent, Focus
 
 # python -m telas.TelaInicial
 
+class InputPesoVagao(Input):
+    def on_focus(self, event: Focus) -> None:
+        self.value = ""
+
+    def _on_blur(self, event):
+        if not self.value:
+            self.value = "Digite aqui"
 
 class TelaVagao(Screen):
 
@@ -27,19 +34,21 @@ class TelaVagao(Screen):
 
         elif event.button.id == "trocar_tela":
             self.screen.app.pop_screen()
-
-    def on_input_focus(self, event: Input.focus) -> None:
-        if event.input.id == "input_peso_vagao":
-            event.input.value = ""
-
+                
     def compose(self) -> ComposeResult:
         yield VerticalScroll(
             Horizontal(
                 Label("Digite o peso do vagão:", id="label_peso_vagao"),
-                Input("Digite aqui", id="input_peso_vagao"),
+                InputPesoVagao("Digite aqui", id="input_peso_vagao"),
                 Button("Cadastrar", id="cadastrar"),
                 Button("Voltar", id="trocar_tela"),
                 id="container_inicial",
             ),
         )
         yield TextArea(id="mensagem", disabled=True)
+        yield Button("Theme", id="theme")
+        
+
+
+    def _on_mount(self, event):
+        acao = Input.on_event.value = "Digite aqui"

@@ -1,3 +1,10 @@
+/* Tudo */
+
+TextArea {
+    color: rgb(255, 255, 255);
+    text-style: bold;
+}
+
 /* TELA INICIAL */
 TelaApp Button {
     margin: 8 0 0 10;
@@ -13,7 +20,15 @@ TelaApp #container_inicial {
 }
 
 TelaApp #sair {
-    margin: 0 0 0 50
+    margin: 0 0 0 50;
+}
+
+TelaApp #theme {
+    width: 1;
+    height: 2;
+    margin: 0 10 0 0;
+    /* cima, direita, baixo, esquerda */
+    text-align: center;
 }
 
 /* TELA VAGAO */
@@ -46,13 +61,14 @@ TelaVagao, TelaTrem, TelaLocomotiva {
 }
 
 TelaVagao #container_inicial{
-    margin: 0 0 0 2
+    margin: 0 0 0 2;
 }
 
 TelaVagao Button {
     margin: 10 0 0 10;
     width: 16%;
-    height: 23%
+    height: 25%;
+    background:rgb(4, 45, 4);
 }
 
 #textArea_Trem {
@@ -61,17 +77,31 @@ TelaVagao Button {
 }
 
 /* TELA LOCOMOTIVA */
+
+TelaLocomotiva Label {
+    margin: 5 0 12 0;
+}
+
 Checkboxes {
     margin: 1 0 1 0;
     layout: horizontal;
 }
 
-#label_combustivel_locomotiva, #label_peso_locomotiva {
-    margin: 0 0 0 0
+#label_combustivel_locomotiva{
+    margin: 0 0 0 0;
+    /* cima, direita, baixo, esquerda */
+
+}
+
+#label_peso_locomotiva {
+    margin: 3 0 0 0;
+    /* cima, direita, baixo, esquerda */
+
 }
 
 #input_combustivel_locomotiva, #input_peso_locomotiva {
-    margin: 0 0 0 0
+    margin: 0 0 0 0;
+    width: 40%;
 }
 
 .checkboxes_container {
@@ -82,12 +112,13 @@ TelaLocomotiva Button {
     width: 15%;
     height: 4;
     text-align: center;
-    margin: 0 0 0 0;
-    align: left middle;
+    background:rgb(4, 45, 4);
+    margin: 0 3 0 0;
 }
 
-.container_TelaLocomotiva {
+#container_TelaLocomotiva {
     text-align: center;
+    margin: 10 0 0 0;
     align-horizontal: center;
     align-vertical: middle;
 }
@@ -96,6 +127,7 @@ TelaLocomotiva {
     align-horizontal: center;
     align-vertical: middle;
 }
+
 
 /* TELA TREM */
 
@@ -133,7 +165,7 @@ TelaLocomotiva {
 }
 
 #engatar {
-    margin: 0 0 0 0 
+    margin: 0 0 0 0;
 }
 
 TelaTrem {
@@ -148,16 +180,39 @@ TelaTrem Button {
     width: 15%;
     height: 4;
     text-align: center;
+    background:rgb(4, 45, 4);
 }
 
 TelaTrem Input {
+    margin: 0 0 0 2;
     border: solid;
+}
+
+TelaTrem Label {
+    margin: 1 0 0 0;
+}
+
+#desengatar, #engatar {
+    margin: 0 0 0 2;
+    /* cima, direita, baixo, esquerda */
 }
 
 /* TELA DADOS */
 
 TelaDados Button {
     width: 15%;
+    background:rgb(4, 45, 4);
+    color:rgb(111, 217, 255);
+    text-style: blink;
+    border: thick rgb(111, 217, 255);   
+}
+
+TelaDados TextArea {
+    background:rgb(1, 0, 46);
+}
+
+TelaDados {
+    background: rgb(33, 11, 3);
 }
 
 /* FOOTER E HEADER */
